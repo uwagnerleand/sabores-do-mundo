@@ -1,0 +1,235 @@
+:root {
+    --carmim: #da849b;
+    --cinza-alaranjado: #e4dac6;
+    --carmim-claro: #f3e7ea;
+    --verde: #c7d784;
+    --vinho: #7a1734;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Recipe cards */
+.recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(122, 23, 52, 0.12);
+}
+
+.recipe-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.recipe-card h3,
+.recipe-card p,
+.recipe-card span {
+    color: #1f2937 !important;
+}
+
+.ver-receita-btn {
+    background: #111 !important;
+    color: #fff !important;
+}
+
+.ver-receita-btn:hover {
+    background: #374151 !important;
+}
+
+.card-likes { color: #ec4899 !important; }
+.card-rating { color: #f59e0b !important; }
+
+/* Category tags */
+.category-tag {
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.category-tag:hover,
+.category-tag.active {
+    background: var(--carmim);
+    color: #fff;
+}
+
+/* Buttons */
+.btn-primary:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+}
+
+.btn-primary {
+    transition: all 0.2s;
+}
+
+/* Hero */
+.hero-overlay {
+    background: linear-gradient(135deg, rgba(122, 23, 52, 0.7) 0%, rgba(218, 132, 155, 0.4) 100%);
+}
+
+/* Modal */
+#recipe-detail {
+    display: none;
+}
+
+#recipe-detail.visible {
+    display: block;
+}
+
+/* Prestige ranking */
+.prestige-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.prestige-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(122, 23, 52, 0.12);
+}
+
+#user-role,
+#prestige-score {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Like button */
+.like-btn {
+    border: 2px solid var(--carmim);
+    color: var(--vinho);
+    background: white;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.like-btn:hover,
+.like-btn.liked {
+    background: var(--carmim);
+    color: white;
+}
+
+.like-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Star rating */
+.star-btn {
+    font-size: 1.75rem;
+    color: #d1d5db;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s, transform 0.1s;
+    padding: 0 2px;
+    line-height: 1;
+}
+
+.star-btn.active {
+    color: #f59e0b;
+}
+
+.star-btn.hover {
+    color: #fbbf24;
+    transform: scale(1.15);
+}
+
+.star-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+/* Auth tabs */
+.tab-btn {
+    color: #6b7280;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    background: none;
+    cursor: pointer;
+}
+
+.tab-btn:hover {
+    color: var(--vinho);
+}
+
+.tab-btn.tab-active {
+    border-bottom-color: var(--carmim);
+    color: var(--vinho);
+    font-weight: 700;
+}
+
+/* Community cards */
+.community-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.community-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(122, 23, 52, 0.12);
+}
+
+.community-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--vinho), var(--carmim));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.375rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    flex-shrink: 0;
+}
+
+/* Recipe wizard cards (step 1) */
+.wizard-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 24px 16px;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.22s;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
+
+.wizard-card:hover {
+    border-color: var(--carmim);
+    background: var(--carmim-claro);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(218, 132, 155, 0.28);
+}
+
+/* Recipe wizard option tags (step 2) */
+.wizard-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    background: #f1f5f9;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    transition: all 0.18s;
+    white-space: nowrap;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.wizard-tag:hover {
+    background: var(--carmim);
+    color: white;
+    transform: scale(1.06);
+    box-shadow: 0 4px 14px rgba(218, 132, 155, 0.38);
+}

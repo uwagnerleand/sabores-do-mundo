@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabores do Mundo</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+ </head>
+ <body id="top" data-page="home" class="min-h-screen w-full" style="background: rgb(243, 231, 234);"><!-- Header -->
+  <header class="w-full sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-pink-100">
+   <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <h1 class="canva-text text-2xl font-bold" style="color: rgb(122, 23, 52); font-weight: 800; font-style: normal; font-size: 32px;">Sabores do Mundo</h1>
+    <nav class="hidden md:flex items-center gap-6"><a href="index.html" class="canva-link font-medium hover:opacity-70 transition cursor-pointer" style="color: rgb(122, 23, 52); font-weight: 600; font-style: normal; font-size: 16px;">Início</a> <a href="receitas.html" class="canva-link font-medium hover:opacity-70 transition cursor-pointer" style="color: rgb(122, 23, 52); font-weight: 600; font-style: normal; font-size: 16px;">Receitas</a> <a href="categorias.html" class="canva-link font-medium hover:opacity-70 transition cursor-pointer" style="color: rgb(122, 23, 52); font-weight: 600; font-style: normal; font-size: 16px;">Categorias</a> <a href="index.html#about" class="canva-link font-medium hover:opacity-70 transition cursor-pointer" style="color: rgb(122, 23, 52); font-weight: 600; font-style: normal; font-size: 16px;">Sobre</a>
+    </nav><button id="mobile-menu-btn" class="md:hidden" aria-label="Menu"> <i data-lucide="menu" style="width:24px;height:24px;color:var(--vinho)"></i> </button>
+   </div>
+  </header>
+
+  <!-- Menu mobile (toggle pelo hambúrguer) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-pink-100 sticky top-[72px] z-40">
+    <nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col">
+      <a href="index.html"      class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Início</a>
+      <a href="receitas.html"   class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Receitas</a>
+      <a href="categorias.html" class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Categorias</a>
+      <a href="index.html#about" class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Sobre</a>
+    </nav>
+  </div>
+
+  <main class="w-full"><!-- Hero -->
+   <section class="relative w-full h-[500px] md:h-[600px] overflow-hidden"><img class="canva-image w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" alt="Colorful quinoa salad with fresh vegetables">
+    <div class="hero-overlay absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+     <h2 class="canva-text text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg" style="color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 24px;">Descubra Sabores do Mundo</h2>
+     <p class="canva-text text-lg md:text-xl mb-8 max-w-2xl" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Receitas autênticas de todas as culturas, direto para a sua cozinha.</p>
+     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="receitas.html" class="btn-primary px-8 py-4 rounded-full text-base font-semibold" style="background: rgb(218, 132, 155); color: rgb(255, 255, 255);">Ver Receitas</a>
+      <a href="categorias.html" class="btn-primary px-8 py-4 rounded-full text-base font-semibold" style="background: rgb(218, 132, 155); color: rgb(255, 255, 255);">Explorar Categorias</a>
+     </div>
+     <p class="mt-6 text-sm md:text-base max-w-2xl mx-auto text-white/90">Faça login em Receitas, adicione seus pratos e veja chefs e turistas culinários ganhando prestígio por suas contribuições.</p>
+    </div>
+   </section>
+   <section class="max-w-7xl mx-auto px-4 py-16">
+    <div class="grid gap-8 md:grid-cols-2">
+     <div class="rounded-3xl bg-white p-10 shadow-lg">
+      <h2 class="text-3xl font-bold mb-4" style="color: rgb(122, 23, 52);">Veja todas as receitas</h2>
+      <p class="text-base" style="color: rgb(85, 85, 85);">Acesse a lista completa de receitas e encontre opções por culinária, ingredientes e tempo de preparo.</p>
+     </div>
+     <div class="rounded-3xl bg-white p-10 shadow-lg">
+      <h2 class="text-3xl font-bold mb-4" style="color: rgb(122, 23, 52);">Filtre por categorias</h2>
+      <p class="text-base" style="color: rgb(85, 85, 85);">Use filtros por país, região ou ocasião para descobrir receitas alinhadas ao seu momento.</p>
+     </div>
+    </div>
+   </section>
+  </main>
+  <section id="about" class="w-full bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-6" style="color: rgb(122, 23, 52);">Sobre o Sabores do Mundo</h2>
+      <p class="text-base text-center max-w-3xl mx-auto" style="color: rgb(85, 85, 85);">Este projeto reúne receitas de vários países e permite navegar por categorias, buscar pratos e visualizar detalhes em um só lugar.</p>
+    </div>
+  </section><!-- Footer -->
+  <footer data-template-id="footer-section" class="canva-footer w-full py-10 mt-8" style="background: rgb(122, 23, 52);">
+   <div class="max-w-7xl mx-auto px-4 text-center">
+    <h3 data-template-id="footer-brand" class="canva-text text-xl font-bold mb-2" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 19px;">Sabores do Mundo</h3>
+    <p data-template-id="footer-text" class="canva-text text-sm" style="color: rgb(243, 231, 234); font-weight: 400; font-style: normal; font-size: 16px;">Explorando culturas através da gastronomia. © 2026</p>
+   </div>
+  </footer>
+  <script src="script.js"></script>
+</body></html>

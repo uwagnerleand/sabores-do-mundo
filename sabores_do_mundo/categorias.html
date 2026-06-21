@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorias - Sabores do Mundo</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top" data-page="categorias" class="min-h-screen w-full" style="background: rgb(243, 231, 234);">
+  <header class="w-full sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-pink-100">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-2xl font-bold" style="color: rgb(122, 23, 52); font-weight: 800; font-size: 32px;">Sabores do Mundo</h1>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="font-medium hover:opacity-70 transition" style="color: rgb(122, 23, 52); font-weight: 600;">Início</a>
+        <a href="receitas.html" class="font-medium hover:opacity-70 transition" style="color: rgb(122, 23, 52); font-weight: 600;">Receitas</a>
+        <a href="categorias.html" class="font-medium hover:opacity-70 transition" style="color: rgb(122, 23, 52); font-weight: 600;">Categorias</a>
+        <a href="index.html#about" class="font-medium hover:opacity-70 transition" style="color: rgb(122, 23, 52); font-weight: 600;">Sobre</a>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden" aria-label="Menu">
+        <i data-lucide="menu" style="width:24px;height:24px;color:var(--vinho)"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu mobile (toggle pelo hambúrguer) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-pink-100 sticky top-[72px] z-40">
+    <nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col">
+      <a href="index.html"      class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Início</a>
+      <a href="receitas.html"   class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Receitas</a>
+      <a href="categorias.html" class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Categorias</a>
+      <a href="index.html#about" class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Sobre</a>
+    </nav>
+  </div>
+
+  <main class="w-full">
+    <!-- Hero -->
+    <section class="relative w-full h-[380px] md:h-[440px] overflow-hidden">
+      <img class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Pratos variados do mundo">
+      <div class="hero-overlay absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg" style="color:#fff;">Explorar Categorias</h2>
+        <p class="text-lg mb-4 max-w-2xl" style="color:#fff;">Filtre por país, região ou ocasião e descubra pratos que combinam com seu momento.</p>
+        <a href="receitas.html" class="mt-2 text-sm font-semibold underline" style="color:rgba(255,255,255,0.85);">Quer adicionar uma receita? Faça login em Receitas →</a>
+      </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="max-w-7xl mx-auto px-4 py-10">
+      <h2 class="text-3xl font-bold text-center mb-8" style="color:rgb(122,23,52);">Filtrar por categoria</h2>
+
+      <div class="grid gap-6 lg:grid-cols-3 mb-6">
+
+        <!-- País -->
+        <div class="rounded-3xl bg-white p-6 shadow-md">
+          <h3 class="text-lg font-bold mb-4 flex items-center gap-2" style="color:rgb(122,23,52);">
+            <span class="text-xl">🌍</span> País
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="country" data-value="Brasil">🇧🇷 Brasil</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="country" data-value="México">🇲🇽 México</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="country" data-value="Itália">🇮🇹 Itália</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="country" data-value="Japão">🇯🇵 Japão</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="country" data-value="França">🇫🇷 França</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="country" data-value="Argentina">🇦🇷 Argentina</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="country" data-value="Espanha">🇪🇸 Espanha</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="country" data-value="Vietnã">🇻🇳 Vietnã</button>
+          </div>
+        </div>
+
+        <!-- Região (Brasil) -->
+        <div class="rounded-3xl bg-white p-6 shadow-md">
+          <h3 class="text-lg font-bold mb-4 flex items-center gap-2" style="color:rgb(122,23,52);">
+            <span class="text-xl">🗺️</span> Região do Brasil
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="region" data-value="Nordeste">🌵 Nordeste</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="region" data-value="Sudeste">🏙️ Sudeste</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="region" data-value="Norte">🌳 Norte</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="region" data-value="Centro-Oeste">🌾 Centro-Oeste</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="region" data-value="Sul">❄️ Sul</button>
+          </div>
+        </div>
+
+        <!-- Ocasião -->
+        <div class="rounded-3xl bg-white p-6 shadow-md">
+          <h3 class="text-lg font-bold mb-4 flex items-center gap-2" style="color:rgb(122,23,52);">
+            <span class="text-xl">🍽️</span> Tipo / Ocasião
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Prato principal">Prato principal</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Lanche">Lanche</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Jantar">Jantar</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Café da manhã">Café da manhã</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Petisco">Petisco</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Sobremesa">Sobremesa</button>
+            <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Domingo">Domingo</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Datas comemorativas (linha separada) -->
+      <div class="rounded-3xl bg-white p-6 shadow-md mb-6">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-2" style="color:rgb(122,23,52);">
+          <span class="text-xl">🎉</span> Datas comemorativas
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Festa Junina">🌽 Festa Junina</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="São João">🎆 São João</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Natal">🎄 Natal</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Páscoa">🐣 Páscoa</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Carnaval">🎭 Carnaval</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Aniversários">🎂 Aniversários</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Dia das Mães">💐 Dia das Mães</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Dia dos Pais">👔 Dia dos Pais</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Dia das Crianças">🎈 Dia das Crianças</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Réveillon">🎇 Réveillon</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Dia dos Namorados">💝 Namorados</button>
+          <button type="button" class="category-tag px-3 py-2 rounded-full font-medium text-sm bg-slate-100" data-group="occasion" data-value="Semana Santa">✝️ Semana Santa</button>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <p id="filter-count" class="text-sm text-slate-500"></p>
+        <button id="clear-filters" type="button" class="btn-primary px-6 py-3 rounded-full font-semibold text-sm" style="background:rgb(218,132,155);color:#fff;">Limpar filtros</button>
+      </div>
+    </section>
+
+    <!-- Receitas encontradas -->
+    <section class="max-w-7xl mx-auto px-4 pb-10">
+      <h2 class="text-3xl font-bold text-center mb-10" style="color:rgb(122,23,52);">Receitas Encontradas</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="category-results"></div>
+      <p id="no-results-msg" class="hidden text-center text-slate-400 py-12 text-lg">Nenhuma receita encontrada para esse filtro.</p>
+    </section>
+
+    <!-- Ranking de prestígio -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <h3 class="text-2xl font-bold mb-6" style="color:rgb(122,23,52);">Ranking de prestígio</h3>
+      <div id="prestige-ranking" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <!-- Recomendados pela comunidade -->
+    <section id="community-section" class="max-w-7xl mx-auto px-4 py-8 pb-16">
+      <h2 class="text-3xl font-bold text-center mb-2" style="color:rgb(122,23,52);">Recomendados pela Comunidade</h2>
+      <p class="text-center text-slate-500 mb-8 text-sm">Os melhores contribuidores avaliados por curtidas, avaliações e prestígio.</p>
+      <div class="flex gap-2 mb-8 border-b border-slate-200">
+        <button id="community-tab-chef" class="tab-btn tab-active px-6 py-3 text-sm font-semibold">Chefs Culinários</button>
+        <button id="community-tab-turista" class="tab-btn px-6 py-3 text-sm font-semibold">Turistas Culinários</button>
+      </div>
+      <div id="community-chefs" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <div id="community-turistas" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+  </main>
+
+  <!-- Recipe detail modal -->
+  <section id="recipe-detail" class="fixed inset-0 z-[100] overflow-y-auto">
+    <div id="recipe-detail-overlay" class="min-h-full bg-black/50 flex items-start justify-center p-4 pt-10">
+      <div class="w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl relative bg-white">
+        <button id="recipe-detail-close" onclick="hideRecipe()" class="absolute top-4 right-4 z-10 bg-white/80 rounded-full p-2" aria-label="Fechar">
+          <i data-lucide="x" style="width:20px;height:20px;color:var(--vinho)"></i>
+        </button>
+        <img data-template-id="detail-img" class="w-full h-72 object-cover" loading="lazy" src="" alt="">
+        <div class="p-8">
+          <h2 data-template-id="detail-title" class="text-2xl font-bold mb-1" style="color:rgb(122,23,52);"></h2>
+          <p data-template-id="detail-author" class="text-sm text-slate-400 mb-3"></p>
+          <div class="flex flex-wrap gap-4 mb-4 text-sm text-slate-500">
+            <span class="flex items-center gap-1"><i data-lucide="clock" style="width:14px;height:14px"></i> <span data-template-id="detail-time"></span></span>
+            <span class="flex items-center gap-1"><i data-lucide="bar-chart-2" style="width:14px;height:14px"></i> <span data-template-id="detail-difficulty"></span></span>
+          </div>
+          <div data-template-id="detail-tags" class="flex flex-wrap gap-2 mb-6"></div>
+          <h3 class="font-bold text-lg mb-3" style="color:rgb(122,23,52);">Ingredientes</h3>
+          <p data-template-id="detail-ingredients" class="text-sm mb-6 whitespace-pre-line text-slate-600"></p>
+          <h3 class="font-bold text-lg mb-3" style="color:rgb(122,23,52);">Modo de Preparo</h3>
+          <p data-template-id="detail-steps" class="text-sm whitespace-pre-line text-slate-600"></p>
+          <!-- Likes & Ratings -->
+          <div class="mt-6 pt-6 border-t border-slate-100">
+            <div class="flex flex-wrap items-center gap-4 mb-4">
+              <button id="modal-like-btn" type="button" class="like-btn rounded-full px-5 py-2 text-sm font-semibold">♡ Curtir</button>
+              <span class="text-sm text-slate-500"><span id="modal-like-count">0</span> curtidas</span>
+              <span id="modal-avg-rating" class="text-sm text-amber-500 font-semibold ml-auto"></span>
+            </div>
+            <div id="modal-rating-section">
+              <p class="text-sm font-semibold text-slate-600 mb-2">Sua avaliação:</p>
+              <div id="modal-stars" class="flex gap-0.5"></div>
+            </div>
+            <p id="cat-login-hint" class="text-xs text-slate-400 mt-3">
+              Para curtir e avaliar, <a href="receitas.html" class="underline font-semibold" style="color:rgb(122,23,52);">faça login em Receitas</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="w-full py-10 mt-8" style="background:rgb(122,23,52);">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h3 class="text-xl font-bold mb-2" style="color:#fff;">Sabores do Mundo</h3>
+      <p class="text-sm" style="color:rgb(243,231,234);">Explorando culturas através da gastronomia. © 2026</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    // Contador de resultados e mensagem "nenhuma receita"
+    document.addEventListener('DOMContentLoaded', function () {
+      function updateCounts() {
+        const cards = document.querySelectorAll('#category-results .recipe-card');
+        const visible = Array.from(cards).filter(c => c.style.display !== 'none');
+        const countEl = document.getElementById('filter-count');
+        const noMsg = document.getElementById('no-results-msg');
+        if (countEl) countEl.textContent = `${visible.length} receita${visible.length !== 1 ? 's' : ''} encontrada${visible.length !== 1 ? 's' : ''}`;
+        if (noMsg) noMsg.classList.toggle('hidden', visible.length > 0);
+      }
+
+      // Observa mudanças nos estilos dos cards
+      const observer = new MutationObserver(updateCounts);
+      const grid = document.getElementById('category-results');
+      if (grid) observer.observe(grid, { attributes: true, subtree: true, attributeFilter: ['style'] });
+
+      // Atualiza quando as receitas são carregadas
+      const origRender = window.renderRecipeCards;
+      setTimeout(updateCounts, 500);
+
+      // Atualiza ao clicar em filtros e limpar
+      document.querySelectorAll('.category-tag, #clear-filters').forEach(btn => {
+        btn.addEventListener('click', () => setTimeout(updateCounts, 50));
+      });
+
+      // Esconde hint de login se já logado
+      const hint = document.getElementById('cat-login-hint');
+      const logged = localStorage.getItem('saboresUsuarioLogado');
+      if (hint && logged) hint.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
