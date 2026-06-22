@@ -17,6 +17,7 @@
         <a href="index.html" class="font-medium hover:opacity-70 transition" style="color: rgb(122, 23, 52); font-weight: 600;">Início</a>
         <a href="receitas.html" class="font-medium hover:opacity-70 transition" style="color: rgb(122, 23, 52); font-weight: 600;">Receitas</a>
         <a href="categorias.html" class="font-medium hover:opacity-70 transition" style="color: rgb(122, 23, 52); font-weight: 600;">Categorias</a>
+        <a href="usuarios.html" class="font-medium hover:opacity-70 transition" style="color: rgb(122, 23, 52); font-weight: 600;">Usuários</a>
         <a href="index.html#about" class="font-medium hover:opacity-70 transition" style="color: rgb(122, 23, 52); font-weight: 600;">Sobre</a>
       </nav>
       <button id="mobile-menu-btn" class="md:hidden" aria-label="Menu">
@@ -31,6 +32,7 @@
       <a href="index.html"      class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Início</a>
       <a href="receitas.html"   class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Receitas</a>
       <a href="categorias.html" class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Categorias</a>
+      <a href="usuarios.html"   class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Usuários</a>
       <a href="index.html#about" class="font-semibold px-3 py-3 rounded-2xl hover:bg-pink-50 transition" style="color:rgb(122,23,52);">Sobre</a>
     </nav>
   </div>
@@ -51,86 +53,25 @@
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 py-10">
+    <section class="max-w-7xl mx-auto px-4 py-4">
 
-      <!-- Auth panels -->
-      <div id="auth-panels" class="rounded-3xl bg-white shadow-md mb-8 overflow-hidden">
-        <div class="flex border-b border-slate-100">
-          <button id="tab-login" class="tab-btn tab-active flex-1 py-4 text-sm font-semibold">Entrar</button>
-          <button id="tab-register" class="tab-btn flex-1 py-4 text-sm font-semibold">Criar conta</button>
-        </div>
-        <!-- Login -->
-        <div id="login-panel" class="p-6">
-          <h3 class="text-xl font-bold mb-4" style="color:rgb(122,23,52);">Login de usuário</h3>
-          <form id="login-form" class="space-y-4">
-            <div>
-              <label class="block text-sm font-medium text-slate-700">Usuário</label>
-              <input id="login-username" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-700 mt-1 text-sm" type="text" placeholder="Digite seu usuário" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-700">Senha</label>
-              <input id="login-password" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-700 mt-1 text-sm" type="password" placeholder="Digite sua senha" />
-            </div>
-            <button type="submit" class="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-700 transition">Entrar</button>
-          </form>
-          <p id="login-error" class="mt-3 text-sm text-red-600"></p>
-          <p class="mt-4 text-sm text-slate-400">Conta de exemplo: <strong>admin</strong> / <strong>admin123</strong></p>
-        </div>
-        <!-- Register -->
-        <div id="register-panel" class="p-6 hidden">
-          <h3 class="text-xl font-bold mb-4" style="color:rgb(122,23,52);">Criar nova conta</h3>
-          <form id="register-form" class="space-y-4">
-            <div class="grid gap-4 md:grid-cols-2">
-              <div>
-                <label class="block text-sm font-medium text-slate-700">Nome de usuário</label>
-                <input id="reg-username" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-700 mt-1 text-sm" type="text" placeholder="Seu nome de login" required />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-slate-700">Nome de exibição</label>
-                <input id="reg-displayname" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-700 mt-1 text-sm" type="text" placeholder="Como quer ser chamado?" required />
-              </div>
-            </div>
-            <div class="grid gap-4 md:grid-cols-2">
-              <div>
-                <label class="block text-sm font-medium text-slate-700">Senha</label>
-                <input id="reg-password" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-700 mt-1 text-sm" type="password" placeholder="Crie uma senha" required />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-slate-700">Perfil</label>
-                <select id="reg-role" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-700 mt-1 text-sm">
-                  <option value="turista">Turista Culinário</option>
-                  <option value="chef">Chef Culinário</option>
-                </select>
-              </div>
-            </div>
-            <button type="submit" class="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-700 transition">Criar conta</button>
-          </form>
-          <p id="register-error" class="mt-3 text-sm text-red-600"></p>
-          <p class="mt-3 text-sm text-slate-400">Chefs ganham +8 pontos por receita · Turistas ganham +4 pontos.</p>
+      <!-- Barra do usuário logado -->
+      <div id="user-bar" class="hidden rounded-3xl bg-white px-6 py-4 shadow-md mb-4">
+        <div class="flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <p class="font-bold text-slate-800">Olá, <span id="logged-user-name"></span>!</p>
+            <p class="text-sm text-slate-500 mt-0.5"><span id="user-role"></span> · <span id="prestige-score" class="text-pink-600 font-semibold"></span></p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="btn-cadastrar-receita" class="rounded-full px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition" style="background:rgb(122,23,52);">+ Cadastrar Receita</button>
+            <button id="logout-btn" class="rounded-full border border-red-200 px-4 py-3 text-sm font-semibold text-red-600 hover:bg-red-50 transition">Sair</button>
+          </div>
         </div>
       </div>
 
-      <!-- Logged user panel -->
-      <div id="logged-user-panel" class="hidden rounded-3xl bg-white p-6 shadow-md mb-8">
-        <div class="flex flex-col gap-4">
-          <div class="flex items-center justify-between gap-4">
-            <div>
-              <h3 class="text-2xl font-bold" style="color:rgb(122,23,52);">Bem-vindo, <span id="logged-user-name"></span>!</h3>
-              <p class="text-sm text-slate-500 mt-1">Adicione receitas e ganhe prestígio. A comunidade vai curtir e avaliar!</p>
-            </div>
-            <button id="logout-btn" class="rounded-full bg-red-500 px-5 py-3 text-sm font-semibold text-white hover:bg-red-600 transition flex-shrink-0">Sair</button>
-          </div>
-          <div class="grid gap-3 sm:grid-cols-2">
-            <div class="rounded-3xl bg-slate-100 p-4">
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Perfil</p>
-              <p id="user-role" class="mt-1 font-semibold text-slate-700">Turista Culinário</p>
-            </div>
-            <div class="rounded-3xl bg-pink-50 p-4">
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Prestígio</p>
-              <p id="prestige-score" class="mt-1 font-bold text-pink-600">0 pontos</p>
-            </div>
-          </div>
-        </div>
+      <!-- Barra visitante (não logado) -->
+      <div id="guest-bar" class="flex justify-end mb-4">
+        <a href="login.html?redirect=receitas.html" class="rounded-full px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition inline-block" style="background:rgb(122,23,52);">+ Cadastrar Receita</a>
       </div>
 
       <!-- Recipe submit form -->
@@ -288,29 +229,12 @@
     </section>
 
     <!-- Receitas populares -->
-    <section class="max-w-7xl mx-auto px-4 py-8">
+    <section id="recipe-results-section" class="max-w-7xl mx-auto px-4 py-8">
       <h2 class="text-3xl font-bold text-center mb-10" style="color:rgb(122,23,52);">Receitas Populares</h2>
       <div id="recipe-results" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
       <p id="no-results-msg" class="hidden text-center text-slate-400 py-12 text-lg">Nenhuma receita encontrada para sua busca.</p>
     </section>
 
-    <!-- Ranking de prestígio -->
-    <section class="max-w-7xl mx-auto px-4 py-8">
-      <h3 class="text-2xl font-bold mb-6" style="color:rgb(122,23,52);">Ranking de prestígio</h3>
-      <div id="prestige-ranking" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
-    </section>
-
-    <!-- Recomendados pela comunidade -->
-    <section id="community-section" class="max-w-7xl mx-auto px-4 py-8 pb-16">
-      <h2 class="text-3xl font-bold text-center mb-2" style="color:rgb(122,23,52);">Recomendados pela Comunidade</h2>
-      <p class="text-center text-slate-500 mb-8 text-sm">Os melhores contribuidores avaliados por curtidas, avaliações e prestígio acumulado.</p>
-      <div class="flex gap-2 mb-8 border-b border-slate-200">
-        <button id="community-tab-chef" class="tab-btn tab-active px-6 py-3 text-sm font-semibold">Chefs Culinários</button>
-        <button id="community-tab-turista" class="tab-btn px-6 py-3 text-sm font-semibold">Turistas Culinários</button>
-      </div>
-      <div id="community-chefs" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-      <div id="community-turistas" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </section>
   </main>
 
   <!-- Recipe detail modal -->

@@ -100,6 +100,11 @@ function setLoggedUser(user) {
     localStorage.removeItem(STORAGE_LOGGED_USER);
   }
   loggedUser = user;
+  if (bodyPage === 'login' && user) {
+    const params = new URLSearchParams(window.location.search);
+    window.location.href = params.get('redirect') || 'receitas.html';
+    return;
+  }
   updateUserPanel();
 }
 
@@ -201,25 +206,26 @@ function getUserCommunityScore(user) {
 // --- UI Rendering ---
 
 function updateUserPanel() {
-  const authPanels = document.querySelector('#auth-panels');
-  if (!authPanels) return;
+  if (bodyPage === 'login') return;
+
+  const userBar = document.getElementById('user-bar');
+  const guestBar = document.getElementById('guest-bar');
+  const recipeFormWrapper = document.getElementById('recipe-form');
+
+  if (!userBar && !guestBar) return;
+
   if (loggedUser) {
-    authPanels.classList.add('hidden');
-    if (userPanel) {
-      userPanel.classList.remove('hidden');
-      const nameEl = userPanel.querySelector('#logged-user-name');
-      if (nameEl) nameEl.textContent = loggedUser.displayName || loggedUser.username;
-      if (userRoleDisplay) userRoleDisplay.textContent = loggedUser.role === 'chef' ? 'Chef Culinário' : 'Turista Culinário';
-      const fresh = getUserByUsername(loggedUser.username);
-      if (userPrestigeDisplay) userPrestigeDisplay.textContent = `${fresh?.prestige ?? loggedUser.prestige ?? 0} pontos`;
-    }
-    const wrapper = document.getElementById('recipe-form');
-    if (wrapper) wrapper.classList.remove('hidden');
+    if (userBar) userBar.classList.remove('hidden');
+    if (guestBar) guestBar.classList.add('hidden');
+    const nameEl = document.getElementById('logged-user-name');
+    if (nameEl) nameEl.textContent = loggedUser.displayName || loggedUser.username;
+    if (userRoleDisplay) userRoleDisplay.textContent = loggedUser.role === 'chef' ? 'Chef Culinário' : 'Turista Culinário';
+    const fresh = getUserByUsername(loggedUser.username);
+    if (userPrestigeDisplay) userPrestigeDisplay.textContent = `${fresh?.prestige ?? loggedUser.prestige ?? 0} pontos`;
   } else {
-    authPanels.classList.remove('hidden');
-    if (userPanel) userPanel.classList.add('hidden');
-    const wrapper = document.getElementById('recipe-form');
-    if (wrapper) wrapper.classList.add('hidden');
+    if (userBar) userBar.classList.add('hidden');
+    if (guestBar) guestBar.classList.remove('hidden');
+    if (recipeFormWrapper) recipeFormWrapper.classList.add('hidden');
   }
 }
 
@@ -546,6 +552,8 @@ function handleRecipeSubmit(event) {
   renderCommunitySection();
   recipeSubmitForm.reset();
   resetRecipeWizard();
+  const recipeFormWrapper = document.getElementById('recipe-form');
+  if (recipeFormWrapper) recipeFormWrapper.classList.add('hidden');
 
   if (recipeMessage) {
     recipeMessage.textContent = `Receita enviada! +${points} pontos de prestígio.`;
@@ -561,7 +569,7 @@ function getRecipeCards() {
   return Array.from(document.querySelectorAll('.recipe-card'));
 }
 
-function filterCards() {
+function filterCards(scrollToResults = false) {
   const query = searchInput?.value.trim().toLowerCase() || '';
   getRecipeCards().forEach(card => {
     const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
@@ -579,6 +587,10 @@ function filterCards() {
   if (noMsg) {
     const hasVisible = getRecipeCards().some(c => c.style.display !== 'none');
     noMsg.classList.toggle('hidden', hasVisible);
+  }
+  if (scrollToResults) {
+    const section = document.getElementById('recipe-results-section');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
@@ -1237,6 +1249,21 @@ document.addEventListener('DOMContentLoaded', async function () {
   if (typeof lucide !== 'undefined') lucide.createIcons();
 
   loggedUser = getLoggedUser();
+
+  // Página de login: redireciona se já logado, configura formulários e encerra
+  if (bodyPage === 'login') {
+    if (loggedUser) {
+      const params = new URLSearchParams(window.location.search);
+      window.location.href = params.get('redirect') || 'receitas.html';
+      return;
+    }
+    loginForm?.addEventListener('submit', handleLogin);
+    registerForm?.addEventListener('submit', handleRegister);
+    setupMobileMenu();
+    setupAuthTabs();
+    return;
+  }
+
   await loadRecipesFromJson();
 
   updateUserPanel();
@@ -1245,8 +1272,19 @@ document.addEventListener('DOMContentLoaded', async function () {
   renderCommunitySection();
 
   if (bodyPage === 'receitas') {
-    searchButton?.addEventListener('click', filterCards);
-    searchInput?.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); filterCards(); } });
+    searchButton?.addEventListener('click', () => filterCards(true));
+    searchInput?.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); filterCards(true); } });
+    searchInput?.addEventListener('input', () => filterCards(false));
+
+    document.getElementById('btn-cadastrar-receita')?.addEventListener('click', () => {
+      const form = document.getElementById('recipe-form');
+      if (form) {
+        form.classList.toggle('hidden');
+        if (!form.classList.contains('hidden')) {
+          form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
   }
 
   filterTags.forEach(tag => {
@@ -1261,8 +1299,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     filterCards();
   });
 
-  loginForm?.addEventListener('submit', handleLogin);
-  registerForm?.addEventListener('submit', handleRegister);
   recipeSubmitForm?.addEventListener('submit', handleRecipeSubmit);
   logoutButton?.addEventListener('click', handleLogout);
 
@@ -1272,7 +1308,6 @@ document.addEventListener('DOMContentLoaded', async function () {
   });
 
   setupMobileMenu();
-  setupAuthTabs();
   setupCommunityTabs();
   setupModalLikeBtn();
   setupRecipeWizard();
